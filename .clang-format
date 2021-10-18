@@ -1,0 +1,16 @@
+BasedOnStyle: Google
+IndentWidth: 4
+AccessModifierOffset: -4
+AlignAfterOpenBracket: AlwaysBreak
+BinPackArguments: false
+BinPackParameters: false
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowAllArgumentsOnNextLine: false
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterClass: false
+  AfterFunction: true
+  AfterControlStatement: false
+PointerAlignment: Right
+DerivePointerAlignment: false
+AllowShortIfStatementsOnASingleLine: Never

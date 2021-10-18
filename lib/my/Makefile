@@ -15,7 +15,7 @@ DBGFLAGS	= -g3 -ggdb
 LDFLAGS 	= -L lib -lmy -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio
 
 ######### SOURCES #########
-SRC			=	
+SRC			=	linked_list.c
 
 OBJ			=	$(SRC:.c=.o)
 
@@ -29,9 +29,8 @@ CC			=	gcc
 all:	$(NAME)
 
 $(NAME):    $(OBJ)
-	ar rc $(LIB) $(OBJ)
-	mv $(LIB) ../
-	cp my.h ../../include/
+	ar rc $(NAME) $(LIB) $(OBJ)
+	mv libmy.a ../
 
 debug: CFLAGS += $(DBGFLAGS)
 debug: $(NAME)
@@ -41,7 +40,6 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f ../$(LIB)
 
 re: fclean all
 

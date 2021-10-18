@@ -12,10 +12,12 @@ CPPFLAGS	= -iquote $(IDIR)
 
 DBGFLAGS	= -g3 -ggdb
 
-LDFLAGS 	= -L lib -lmy -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio
+LDFLAGS 	= -L./lib -lmy -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio
 
 ######### SOURCES #########
-SRC			=	src/main.c
+SRC			=	src/main.c	\
+				src/game.c	\
+				src/train.c	\
 
 OBJ			=	$(SRC:.c=.o)
 

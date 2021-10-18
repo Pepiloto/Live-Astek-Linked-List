@@ -5,30 +5,44 @@
 ** linked_list
 */
 
-#include "my.h"
 #include <stdlib.h>
 
-linked_list_t *add_list(void *data, linked_list_t *list)
-{
-    linked_list_t *new_node = NULL;
+#include "my_list.h"
 
-    new_node = malloc(sizeof(linked_list_t));
+void list_push(linked_list_t **list, void *data)
+{
+    linked_list_t *new_node = malloc(sizeof(linked_list_t));
+
+    if (!new_node) {
+        return;
+    }
     new_node->data = data;
-    new_node->next = list;
-    return (new_node);
+    new_node->next = *list;
+    *list = new_node;
 }
 
-void print_list(linked_list_t *head)
+linked_list_t *list_pop(linked_list_t **head)
+{
+    linked_list_t *tmp = *head;
+
+    if (!*head) {
+        return NULL;
+    }
+    *head = (*head)->next;
+    return (tmp);
+}
+
+void list_apply(linked_list_t *head, void (*f)(void *))
 {
     linked_list_t *current_node = head;
 
     while (current_node != NULL) {
-        printf("It prints\n");
+        f(current_node->data);
         current_node = current_node->next;
     }
 }
 
-int len_list(linked_list_t *head)
+int list_size(linked_list_t *head)
 {
     int len = 0;
     linked_list_t *current_node = head;
@@ -37,4 +51,5 @@ int len_list(linked_list_t *head)
         ++len;
         current_node = current_node->next;
     }
+    return len;
 }
